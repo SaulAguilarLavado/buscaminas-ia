@@ -6,6 +6,7 @@ from pathlib import Path
 
 from adaptive_game import AdaptiveSession, Minesweeper
 from dataset_pipeline import prepare_dataset, train_classifier
+from rl_agent import demo_agent, train_agent
 
 
 ROOT = Path(__file__).resolve().parent
@@ -60,14 +61,23 @@ def play(seed: int | None) -> None:
 def main() -> None:
   """Procesa argumentos y ejecuta la función elegida."""
   parser = argparse.ArgumentParser(description=__doc__)
-  parser.add_argument("command", choices=["prepare", "train", "play"])
+  parser.add_argument(
+    "command", choices=["prepare", "train", "train-agent", "demo-agent", "play"]
+  )
   parser.add_argument("--dataset", type=Path, default=None)
   parser.add_argument("--seed", type=int, default=None)
+  parser.add_argument("--episodes", type=int, default=10000)
+  parser.add_argument("--evaluation", type=int, default=1000)
   args = parser.parse_args()
   if args.command == "play":
     play(args.seed)
     return
-  if args.command == "prepare":
+  if args.command == "demo-agent":
+    print(demo_agent(ROOT, args.seed or 42))
+    return
+  if args.command == "train-agent":
+    result = train_agent(ROOT, args.episodes, args.evaluation, args.seed or 42)
+  elif args.command == "prepare":
     result = prepare_dataset(ROOT, args.dataset)
   else:
     result = train_classifier(ROOT, args.dataset)

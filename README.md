@@ -20,6 +20,8 @@ copiar el CSV al proyecto. También puedes pasar un CSV existente con `--dataset
 ```bash
 python main.py prepare
 python main.py train
+python main.py train-agent --episodes 10000 --evaluation 1000
+python main.py demo-agent --seed 42
 python main.py play
 ```
 
@@ -30,6 +32,12 @@ resumen en `artifacts/data_summary.json`. La vista previa del portal Kaggle mues
 y sus métricas en `artifacts/`. `play` inicia el juego de consola; después de cada
 cinco partidas ajusta como máximo un nivel según victorias y pistas solicitadas.
 Las pistas señalan números del tablero para razonar y no consultan las minas ocultas.
+
+`train-agent` entrena un primer agente Q-Learning en tableros 5x5 con 3 minas.
+Compara sus victorias con una política aleatoria usando las mismas semillas y
+guarda `artifacts/rl_q_values.json` y `artifacts/rl_metrics.json`. El agente
+entrenado todavía no controla la partida interactiva; es un experimento separado.
+`demo-agent` reproduce una partida automática usando los valores aprendidos.
 
 ## Datos y alcance
 
