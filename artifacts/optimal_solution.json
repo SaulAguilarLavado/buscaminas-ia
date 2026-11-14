@@ -1,0 +1,17 @@
+{
+  "tablero": "5x5, 3 minas; inicio seguro central",
+  "victorias_optimas": 512,
+  "distribuciones": 560,
+  "tasa_optima": 0.914286,
+  "metodo": "expectimax exacto sobre estados de información (optimal_solver.py)",
+  "supuestos": [
+    "560 distribuciones equiprobables",
+    "primera jugada fija en la casilla central",
+    "ganar = abrir las 22 casillas seguras; las banderas no cambian la partida"
+  ],
+  "validacion_transiciones": {
+    "movimientos": 4358,
+    "discrepancias": 0
+  },
+  "segundos": 0.7
+}

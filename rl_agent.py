@@ -1,105 +1,133 @@
-"""Primer agente Q-Learning con estados locales observables del Buscaminas."""
+"""Agente Q-Learning con estado basado en la probabilidad de mina por casilla.
+
+La probabilidad se calcula solo con información visible (números abiertos, número
+total de minas y regla de inicio seguro); nunca consulta ``game.mines`` salvo mediante
+``game.number`` de casillas ya abiertas. La política de ejecución solo usa ese estado.
+"""
 
 import json
-from collections import defaultdict
+from functools import lru_cache
+from math import ceil
 from pathlib import Path
 from random import Random
 
 from adaptive_game import Minesweeper
+from board_rules import (
+  CELLS, FIRST, MINES, SIZE, all_layouts, game_for_layout, game_for_seed, neighbors,
+)
+
+ALPHA, GAMMA = 0.15, 0.95
+EPSILON_START, EPSILON_END = 1.0, 0.05
+REWARD_WIN, REWARD_LOSS, REWARD_PER_CELL = 10.0, -10.0, 0.1
+
+
+@lru_cache(maxsize=1)
+def _tables() -> tuple[dict, dict, tuple[int, ...]]:
+  """Máscaras de bits compartidas: casillas, vecinas y las 560 distribuciones."""
+  bit = {cell: 1 << (cell[0] * SIZE + cell[1]) for cell in CELLS}
+  neighbor_mask = {
+    cell: sum(bit[near] for near in neighbors(cell)) for cell in CELLS
+  }
+  layouts = tuple(sum(bit[cell] for cell in layout) for layout in all_layouts())
+  return bit, neighbor_mask, layouts
+
+
+class Belief:
+  """Conjunto de distribuciones de minas compatibles con lo observado."""
+
+  def __init__(self, game: Minesweeper):
+    if (game.size, game.mine_count) != (SIZE, MINES) or not game.safe_start:
+      raise ValueError("Belief solo admite el tablero de referencia con inicio seguro")
+    self.game = game
+    self.bit, self.neighbor_mask, masks = _tables()
+    self.layouts = list(masks)
+    self.seen: set[tuple[int, int]] = set()
+    self.update()
+
+  def update(self) -> None:
+    """Filtra distribuciones con las casillas abiertas desde la última vez."""
+    new = [cell for cell in self.game.opened if cell not in self.seen]
+    for cell in new:
+      mask = self.neighbor_mask[cell]
+      number = self.game.number(cell)  # número visible de una casilla abierta
+      cell_bit = self.bit[cell]
+      self.layouts = [
+        layout for layout in self.layouts
+        if not layout & cell_bit and (layout & mask).bit_count() == number
+      ]
+    self.seen.update(new)
+
+  def probabilities(self) -> dict[tuple[int, int], float]:
+    """Probabilidad de mina de cada casilla cerrada."""
+    total = len(self.layouts)
+    return {
+      cell: sum(1 for layout in self.layouts if layout & bit) / total
+      for cell, bit in self.bit.items() if cell not in self.game.opened
+    }
 
 
 def available(game: Minesweeper) -> list[tuple[int, int]]:
   """Devuelve casillas cerradas sin consultar la ubicación de las minas."""
-  return [
-    (row, column)
-    for row in range(game.size)
-    for column in range(game.size)
-    if (row, column) not in game.opened
-  ]
+  return [cell for cell in CELLS if cell not in game.opened]
 
 
-def state(game: Minesweeper, cell: tuple[int, int]) -> str:
-  """Resume pistas visibles alrededor de una casilla candidata."""
-  clues = []
-  for neighbor in game.neighbors(cell):
-    if neighbor not in game.opened:
-      continue
-    hidden = sum(near not in game.opened for near in game.neighbors(neighbor))
-    clues.append((game.number(neighbor), hidden))
-  if not clues:
-    return "sin_pistas"
-  estimates = [round(4 * number / hidden) for number, hidden in clues]
-  return f"{min(4, min(estimates))}:{min(4, max(estimates))}:{min(3, len(clues))}"
+def state_key(game: Minesweeper, cell: tuple[int, int], probability: float) -> str:
+  """Estado: probabilidad discretizada y casillas vecinas aún cerradas."""
+  bucket = 0 if probability == 0 else min(21, ceil(probability * 20))
+  hidden = min(3, sum(n not in game.opened for n in game.neighbors(cell)))
+  return f"{bucket}:{hidden}"
 
 
-def choose(game: Minesweeper, values: dict[str, float], rng: Random,
-           epsilon: float) -> tuple[int, int]:
+def keys(game: Minesweeper, belief: Belief) -> dict[tuple[int, int], str]:
+  """Estado de todas las casillas cerradas."""
+  return {
+    cell: state_key(game, cell, p) for cell, p in belief.probabilities().items()
+  }
+
+
+def choose(states: dict[tuple[int, int], str], values: dict[str, float],
+           rng: Random, epsilon: float) -> tuple[int, int]:
   """Selecciona una acción válida con exploración epsilon-greedy."""
-  cells = available(game)
   if rng.random() < epsilon:
-    return rng.choice(cells)
-  best = max(values.get(state(game, cell), 0.0) for cell in cells)
-  return rng.choice([
-    cell for cell in cells if values.get(state(game, cell), 0.0) == best
-  ])
+    return rng.choice(list(states))
+  best = max(values.get(key, 0.0) for key in states.values())
+  return rng.choice([c for c, k in states.items() if values.get(k, 0.0) == best])
 
 
-def episode(values: dict[str, float], seed: int, rng: Random,
-            epsilon: float, learn: bool) -> bool:
-  """Juega una partida y actualiza Q después de cada acción si corresponde."""
-  game = Minesweeper(5, 3, seed)
-  game.reveal(2, 2)
+def epsilon_at(index: int, episodes: int) -> float:
+  """Exploración lineal de EPSILON_START a EPSILON_END."""
+  progress = index / max(1, episodes - 1)
+  return max(EPSILON_END, EPSILON_START - (EPSILON_START - EPSILON_END) * progress)
+
+
+def train_episode(values: dict[str, float], layout: frozenset, rng: Random,
+                  epsilon: float) -> bool:
+  """Juega una partida sobre una distribución dada y actualiza Q tras cada acción."""
+  game = game_for_layout(layout)
+  belief = Belief(game)
   while not game.finished:
-    cell = choose(game, values, rng, epsilon)
-    key = state(game, cell)
+    states = keys(game, belief)
+    cell = choose(states, values, rng, epsilon)
+    key = states[cell]
     before = len(game.opened)
     game.reveal(*cell)
-    reward = 10.0 if game.won else -10.0 if game.finished else 0.1 * (
-      len(game.opened) - before
+    belief.update()
+    reward = REWARD_WIN if game.won else REWARD_LOSS if game.finished else (
+      REWARD_PER_CELL * (len(game.opened) - before)
     )
-    if learn:
-      next_best = 0.0 if game.finished else max(
-        values.get(state(game, other), 0.0) for other in available(game)
-      )
-      values[key] += 0.15 * (reward + 0.95 * next_best - values[key])
+    next_best = 0.0 if game.finished else max(
+      values.get(k, 0.0) for k in keys(game, belief).values()
+    )
+    values[key] = values.get(key, 0.0) + ALPHA * (
+      reward + GAMMA * next_best - values.get(key, 0.0)
+    )
   return game.won
 
 
-def train_agent(root: Path, episodes: int = 10000, evaluation: int = 1000,
-                seed: int = 42) -> dict:
-  """Entrena Q-Learning y compara con una política aleatoria en mismas semillas."""
-  if not 1 <= episodes <= 1_000_000 or not 1 <= evaluation <= 100_000:
-    raise ValueError("episodes y evaluation deben ser positivos y razonables")
-  values: dict[str, float] = defaultdict(float)
-  rng = Random(seed)
-  training_wins = 0
-  for index in range(episodes):
-    epsilon = max(0.05, 1.0 - 0.95 * index / max(1, episodes - 1))
-    training_wins += episode(values, seed + index, rng, epsilon, True)
-  learned_wins = 0
-  random_wins = 0
-  for index in range(evaluation):
-    board_seed = seed + episodes + index
-    learned_wins += episode(values, board_seed, Random(board_seed), 0.0, False)
-    random_wins += episode(values, board_seed, Random(board_seed), 1.0, False)
-  report = {
-    "algoritmo": "Q-Learning tabular con estado local compartido",
-    "tablero": "5x5, 3 minas; primera casilla central segura",
-    "partidas_entrenamiento": episodes,
-    "victorias_entrenamiento": training_wins,
-    "partidas_evaluacion": evaluation,
-    "victorias_agente": learned_wins,
-    "tasa_victorias_agente": round(learned_wins / evaluation, 4),
-    "victorias_aleatorio": random_wins,
-    "tasa_victorias_aleatorio": round(random_wins / evaluation, 4),
-    "estados_aprendidos": len(values),
-    "semilla": seed,
-  }
-  artifacts = root / "artifacts"
-  artifacts.mkdir(exist_ok=True)
-  (artifacts / "rl_q_values.json").write_text(json.dumps(dict(values), indent=2))
-  (artifacts / "rl_metrics.json").write_text(json.dumps(report, indent=2))
-  return report
+def new_game(seed: int) -> tuple[Minesweeper, Belief]:
+  """Partida de demostración: minas por semilla y casilla central abierta."""
+  game = game_for_seed(seed)
+  return game, Belief(game)
 
 
 def demo_agent(root: Path, seed: int = 42) -> str:
@@ -108,15 +136,16 @@ def demo_agent(root: Path, seed: int = 42) -> str:
   if not model_path.is_file():
     raise FileNotFoundError("Entrena primero con: python main.py train-agent")
   values = json.loads(model_path.read_text())
-  game = Minesweeper(5, 3, seed)
-  game.reveal(2, 2)
-  lines = ["Inicio: primera casilla central abierta", board_text(game)]
+  game, belief = new_game(seed)
+  lines = ["Inicio: casilla central abierta (inicio seguro)", board_text(game)]
   rng = Random(seed)
   turn = 0
   while not game.finished:
-    cell = choose(game, values, rng, 0.0)
-    clue = state(game, cell)
+    states = keys(game, belief)
+    cell = choose(states, values, rng, 0.0)
+    clue = states[cell]
     game.reveal(*cell)
+    belief.update()
     turn += 1
     lines.extend([
       f"Jugada {turn}: abrir ({cell[0] + 1}, {cell[1] + 1}), estado {clue}",

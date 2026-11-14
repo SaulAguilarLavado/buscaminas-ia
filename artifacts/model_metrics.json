@@ -1,0 +1,50 @@
+{
+  "registros_originales": 1363793,
+  "columnas": 26,
+  "nulos": 0,
+  "duplicados": 293872,
+  "registros_limpios": 1069921,
+  "clases_limpias": {
+    "1": 852991,
+    "0": 216930
+  },
+  "entrenamiento": 748944,
+  "validacion": 160488,
+  "prueba": 160489,
+  "muestra_entrenada": 200000,
+  "variables_visibles": 24,
+  "metricas_validacion": {
+    "exactitud_base_siempre_segura": 0.7972,
+    "exactitud_modelo": 0.816,
+    "precision_minas": 0.6975,
+    "recall_minas": 0.1635,
+    "f1_minas": 0.2649,
+    "matriz_confusion_0_1": [
+      [
+        5321,
+        27218
+      ],
+      [
+        2308,
+        125641
+      ]
+    ]
+  },
+  "metricas_prueba": {
+    "exactitud_base_siempre_segura": 0.7972,
+    "exactitud_modelo": 0.816,
+    "precision_minas": 0.6947,
+    "recall_minas": 0.165,
+    "f1_minas": 0.2666,
+    "matriz_confusion_0_1": [
+      [
+        5368,
+        27172
+      ],
+      [
+        2359,
+        125590
+      ]
+    ]
+  }
+}

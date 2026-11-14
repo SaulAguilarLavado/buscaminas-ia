@@ -1,0 +1,11 @@
+{
+  "registros_originales": 1363793,
+  "columnas": 26,
+  "nulos": 0,
+  "duplicados": 293872,
+  "registros_limpios": 1069921,
+  "clases_limpias": {
+    "1": 852991,
+    "0": 216930
+  }
+}

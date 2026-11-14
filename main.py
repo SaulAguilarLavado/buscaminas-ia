@@ -6,7 +6,9 @@ from pathlib import Path
 
 from adaptive_game import AdaptiveSession, Minesweeper
 from dataset_pipeline import prepare_dataset, train_classifier
-from rl_agent import demo_agent, train_agent
+from evaluate import compare_policies, run_early_probe, run_training
+from optimal_solver import verify_optimal
+from rl_agent import demo_agent
 
 
 ROOT = Path(__file__).resolve().parent
@@ -62,12 +64,25 @@ def main() -> None:
   """Procesa argumentos y ejecuta la función elegida."""
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument(
-    "command", choices=["prepare", "train", "train-agent", "demo-agent", "play"]
+    "command", choices=["prepare", "train", "train-agent", "demo-agent", "play",
+                        "report-charts", "verify-optimal", "compare-policies",
+                        "probe-early"]
   )
   parser.add_argument("--dataset", type=Path, default=None)
   parser.add_argument("--seed", type=int, default=None)
   parser.add_argument("--episodes", type=int, default=10000)
-  parser.add_argument("--evaluation", type=int, default=1000)
+  parser.add_argument("--evaluation", type=int, default=None,
+                      help="obsoleto: train-agent ahora evalúa todas las distribuciones")
+  parser.add_argument("--runs", type=int, default=10,
+                      help="train-agent: corridas de entrenamiento independientes")
+  parser.add_argument("--checkpoint-every", type=int, default=500,
+                      help="train-agent: episodios entre evaluaciones voraces")
+  parser.add_argument("--early-every", type=int, default=25,
+                      help="train-agent: episodios entre checkpoints hasta el 500 (0 = sin)")
+  parser.add_argument("--probe-episodes", type=int, default=25,
+                      help="probe-early: primeros episodios a repetir uno a uno")
+  parser.add_argument("--tie-seeds", type=int, default=None,
+                      help="semillas de desempate (train-agent: 5; compare-policies: 30)")
   args = parser.parse_args()
   if args.command == "play":
     play(args.seed)
@@ -75,8 +90,28 @@ def main() -> None:
   if args.command == "demo-agent":
     print(demo_agent(ROOT, args.seed or 42))
     return
+  if args.command == "report-charts":
+    from reports.plots import generate_charts
+
+    print(json.dumps(generate_charts(ROOT), ensure_ascii=False, indent=2))
+    return
+  if args.command == "verify-optimal":
+    print(json.dumps(verify_optimal(ROOT), ensure_ascii=False, indent=2))
+    return
+  if args.command == "probe-early":
+    print(json.dumps(run_early_probe(ROOT, args.probe_episodes),
+                     ensure_ascii=False, indent=2))
+    return
+  if args.command == "compare-policies":
+    result = compare_policies(ROOT, args.tie_seeds or 30)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return
   if args.command == "train-agent":
-    result = train_agent(ROOT, args.episodes, args.evaluation, args.seed or 42)
+    if args.evaluation is not None:
+      print("Aviso: --evaluation está obsoleto y se ignora.")
+    result = run_training(ROOT, args.episodes, args.runs, args.checkpoint_every,
+                          args.tie_seeds or 5, args.seed or 42,
+                          early_every=args.early_every)
   elif args.command == "prepare":
     result = prepare_dataset(ROOT, args.dataset)
   else:

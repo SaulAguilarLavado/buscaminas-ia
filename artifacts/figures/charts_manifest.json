@@ -1,0 +1,1246 @@
+{
+  "victorias_agente.png": {
+    "series": [
+      {
+        "conjunto": "todas_560",
+        "politica": "aleatoria",
+        "media": 0.170536,
+        "minimo": 0.133929,
+        "maximo": 0.198214
+      },
+      {
+        "conjunto": "todas_560",
+        "politica": "probabilidad_minima_desempate_aleatorio",
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286
+      },
+      {
+        "conjunto": "todas_560",
+        "politica": "probabilidad_minima_desempate_fijo",
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286
+      },
+      {
+        "conjunto": "todas_560",
+        "politica": "q_sin_entrenar",
+        "media": 0.174405,
+        "minimo": 0.133929,
+        "maximo": 0.210714
+      },
+      {
+        "conjunto": "todas_560",
+        "politica": "q_entrenado",
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286
+      },
+      {
+        "conjunto": "retenidas_112",
+        "politica": "aleatoria",
+        "media": 0.210119,
+        "minimo": 0.160714,
+        "maximo": 0.241071
+      },
+      {
+        "conjunto": "retenidas_112",
+        "politica": "probabilidad_minima_desempate_aleatorio",
+        "media": 0.915476,
+        "minimo": 0.883929,
+        "maximo": 0.964286
+      },
+      {
+        "conjunto": "retenidas_112",
+        "politica": "probabilidad_minima_desempate_fijo",
+        "media": 0.946429,
+        "minimo": 0.946429,
+        "maximo": 0.946429
+      },
+      {
+        "conjunto": "retenidas_112",
+        "politica": "q_sin_entrenar",
+        "media": 0.208929,
+        "minimo": 0.160714,
+        "maximo": 0.267857
+      },
+      {
+        "conjunto": "retenidas_112",
+        "politica": "q_entrenado",
+        "media": 0.921131,
+        "minimo": 0.892857,
+        "maximo": 0.955357
+      }
+    ],
+    "lineas": {
+      "meta": 0.9,
+      "optimo_exacto_560": 0.914286
+    },
+    "semillas_desempate": 30
+  },
+  "curva_aprendizaje.png": {
+    "puntos": [
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 0,
+        "media": 0.2,
+        "minimo": 0.2,
+        "maximo": 0.2,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 1,
+        "media": 0.44624990000000003,
+        "minimo": 0.2,
+        "maximo": 0.916071,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 2,
+        "media": 0.5873214,
+        "minimo": 0.235714,
+        "maximo": 0.921429,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 3,
+        "media": 0.7028572000000001,
+        "minimo": 0.308929,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 4,
+        "media": 0.8087500999999999,
+        "minimo": 0.639286,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 5,
+        "media": 0.8373215,
+        "minimo": 0.639286,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 6,
+        "media": 0.8758929999999999,
+        "minimo": 0.664286,
+        "maximo": 0.932143,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 7,
+        "media": 0.9200000000000002,
+        "minimo": 0.901786,
+        "maximo": 0.932143,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 8,
+        "media": 0.9207142000000001,
+        "minimo": 0.903571,
+        "maximo": 0.932143,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 9,
+        "media": 0.9196428000000001,
+        "minimo": 0.903571,
+        "maximo": 0.932143,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 10,
+        "media": 0.9201785000000001,
+        "minimo": 0.907143,
+        "maximo": 0.935714,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 11,
+        "media": 0.9210714,
+        "minimo": 0.907143,
+        "maximo": 0.935714,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 12,
+        "media": 0.9214285,
+        "minimo": 0.907143,
+        "maximo": 0.935714,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 13,
+        "media": 0.9246428,
+        "minimo": 0.9125,
+        "maximo": 0.935714,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 14,
+        "media": 0.9248214000000001,
+        "minimo": 0.916071,
+        "maximo": 0.935714,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 15,
+        "media": 0.9283927999999999,
+        "minimo": 0.916071,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 16,
+        "media": 0.9287499,
+        "minimo": 0.916071,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 17,
+        "media": 0.9287499,
+        "minimo": 0.916071,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 18,
+        "media": 0.9278571,
+        "minimo": 0.914286,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 19,
+        "media": 0.9278571,
+        "minimo": 0.914286,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 20,
+        "media": 0.9278571,
+        "minimo": 0.914286,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 21,
+        "media": 0.9278571,
+        "minimo": 0.914286,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 22,
+        "media": 0.9278571,
+        "minimo": 0.914286,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 23,
+        "media": 0.9278571,
+        "minimo": 0.914286,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 24,
+        "media": 0.9278571,
+        "minimo": 0.914286,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 25,
+        "media": 0.9282142999999999,
+        "minimo": 0.914286,
+        "maximo": 0.953571,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 50,
+        "media": 0.925,
+        "minimo": 0.919643,
+        "maximo": 0.948214,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 75,
+        "media": 0.9221429999999999,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 100,
+        "media": 0.9219644,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 125,
+        "media": 0.9221429999999999,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 150,
+        "media": 0.9221429999999999,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 175,
+        "media": 0.9214287000000001,
+        "minimo": 0.919643,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 200,
+        "media": 0.9226787,
+        "minimo": 0.914286,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 225,
+        "media": 0.9226787,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 250,
+        "media": 0.9221429999999999,
+        "minimo": 0.914286,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 275,
+        "media": 0.9221429999999999,
+        "minimo": 0.914286,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 300,
+        "media": 0.9216073,
+        "minimo": 0.914286,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 325,
+        "media": 0.9216073,
+        "minimo": 0.919643,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 350,
+        "media": 0.9226787,
+        "minimo": 0.919643,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 375,
+        "media": 0.9232144,
+        "minimo": 0.919643,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 400,
+        "media": 0.9232144,
+        "minimo": 0.919643,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 425,
+        "media": 0.9226787,
+        "minimo": 0.919643,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 450,
+        "media": 0.9237501,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 475,
+        "media": 0.9237501,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 500,
+        "media": 0.9237501,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 1000,
+        "media": 0.9225001,
+        "minimo": 0.919643,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 1500,
+        "media": 0.9225001,
+        "minimo": 0.919643,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 2000,
+        "media": 0.9226787,
+        "minimo": 0.919643,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 2500,
+        "media": 0.9214287000000001,
+        "minimo": 0.914286,
+        "maximo": 0.925,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 3000,
+        "media": 0.9221429999999999,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 3500,
+        "media": 0.9219644,
+        "minimo": 0.914286,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 4000,
+        "media": 0.9226788000000001,
+        "minimo": 0.914286,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 4500,
+        "media": 0.9221431000000001,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 5000,
+        "media": 0.9242859000000001,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 5500,
+        "media": 0.9232145,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 6000,
+        "media": 0.9232144,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 6500,
+        "media": 0.9246430999999999,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 7000,
+        "media": 0.9228573000000001,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 7500,
+        "media": 0.9235716,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 8000,
+        "media": 0.9239288,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 8500,
+        "media": 0.9230359,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 9000,
+        "media": 0.9225002,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 9500,
+        "media": 0.9233931,
+        "minimo": 0.919643,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "retenidas_112",
+        "episodio": 10000,
+        "media": 0.9219645,
+        "minimo": 0.914286,
+        "maximo": 0.926786,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 0,
+        "media": 0.168571,
+        "minimo": 0.168571,
+        "maximo": 0.168571,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 1,
+        "media": 0.42667859999999996,
+        "minimo": 0.168571,
+        "maximo": 0.911429,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 2,
+        "media": 0.5811072,
+        "minimo": 0.202857,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 3,
+        "media": 0.7013214999999999,
+        "minimo": 0.290714,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 4,
+        "media": 0.80725,
+        "minimo": 0.646071,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 5,
+        "media": 0.8322858,
+        "minimo": 0.651429,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 6,
+        "media": 0.8666073000000001,
+        "minimo": 0.676071,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 7,
+        "media": 0.9090716000000001,
+        "minimo": 0.8975,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 8,
+        "media": 0.9102145,
+        "minimo": 0.8975,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 9,
+        "media": 0.9102145,
+        "minimo": 0.8975,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 10,
+        "media": 0.9105359,
+        "minimo": 0.901786,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 11,
+        "media": 0.9113573,
+        "minimo": 0.901786,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 12,
+        "media": 0.9113573,
+        "minimo": 0.901786,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 13,
+        "media": 0.9121788000000001,
+        "minimo": 0.901786,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 14,
+        "media": 0.9134287999999999,
+        "minimo": 0.905714,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 15,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 16,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 17,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 18,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 19,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 20,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 21,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 22,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 23,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 24,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve_early.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 25,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 50,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 75,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 100,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 125,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 150,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 175,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 200,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 225,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 250,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 275,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 300,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 325,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 350,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 375,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 400,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 425,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 450,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 475,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 500,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 1000,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 1500,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 2000,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 2500,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 3000,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 3500,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 4000,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 4500,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 5000,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 5500,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 6000,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 6500,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 7000,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 7500,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 8000,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 8500,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 9000,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 9500,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      },
+      {
+        "conjunto": "todas_560",
+        "episodio": 10000,
+        "media": 0.914286,
+        "minimo": 0.914286,
+        "maximo": 0.914286,
+        "corridas": 10,
+        "fuente": "learning_curve.csv"
+      }
+    ],
+    "corridas": 10,
+    "semillas_desempate": "5",
+    "zoom_hasta_episodio": 500,
+    "episodio_por_episodio_hasta": 25,
+    "lineas": {
+      "optimo_exacto_560": 0.914286,
+      "meta": 0.9,
+      "aleatoria_media_560": 0.170536
+    }
+  }
+}

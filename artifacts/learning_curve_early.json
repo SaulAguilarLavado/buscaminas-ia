@@ -1,0 +1,29 @@
+{
+  "descripcion": "Repeticion episodio a episodio de los primeros episodios de cada corrida; epsilon calculado con el calendario completo",
+  "episodios_repetidos": 25,
+  "episodios_calendario_epsilon": 10000,
+  "corridas": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "semillas_desempate": 5,
+  "semilla_division": 2024,
+  "verificacion_contra_learning_curve_csv": {
+    "filas_comparadas": 40,
+    "episodios": [
+      0,
+      25
+    ],
+    "discrepancias": 0,
+    "ejemplos": []
+  },
+  "archivo": "learning_curve_early.csv"
+}

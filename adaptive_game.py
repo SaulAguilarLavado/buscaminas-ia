@@ -36,9 +36,11 @@ class AdaptiveSession:
 class Minesweeper:
   """Tablero con primer movimiento seguro y pistas sin revelar la solución."""
 
-  def __init__(self, size: int, mine_count: int, seed: int | None = None):
+  def __init__(self, size: int, mine_count: int, seed: int | None = None,
+               safe_start: bool = False):
     if size < 2 or not 0 < mine_count < size * size:
       raise ValueError("Dimensiones o número de minas inválidos")
+    self.safe_start = safe_start
     self.size = size
     self.mine_count = mine_count
     self.random = Random(seed)
@@ -72,12 +74,13 @@ class Minesweeper:
     ]
 
   def place_mines(self, first: tuple[int, int]) -> None:
-    """Distribuye minas después del primer movimiento."""
+    """Distribuye minas; con inicio seguro, también libera los vecinos."""
+    protected = {first, *self.neighbors(first)} if self.safe_start else {first}
     choices = [
       (row, column)
       for row in range(self.size)
       for column in range(self.size)
-      if (row, column) != first
+      if (row, column) not in protected
     ]
     self.mines = set(self.random.sample(choices, self.mine_count))
     self.started = True

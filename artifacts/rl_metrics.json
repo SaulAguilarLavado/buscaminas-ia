@@ -1,0 +1,145 @@
+{
+  "configuracion": {
+    "tablero": "5x5, 3 minas; inicio seguro central (2, 2)",
+    "algoritmo": "Q-Learning tabular; estado = cubeta de probabilidad de mina + vecinas cerradas (la probabilidad se calcula con Belief)",
+    "alpha": 0.15,
+    "gamma": 0.95,
+    "epsilon_inicial": 1.0,
+    "epsilon_final": 0.05,
+    "recompensas": {
+      "victoria": 10.0,
+      "derrota": -10.0,
+      "por_casilla_abierta": 0.1
+    },
+    "episodios_por_corrida": 10000,
+    "corridas": 10,
+    "semillas_corridas": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "semilla_division": 2024,
+    "distribuciones_entrenamiento": 448,
+    "distribuciones_retenidas": 112,
+    "checkpoint_cada": 500,
+    "checkpoint_temprano_cada": 25,
+    "checkpoint_temprano_hasta": 500,
+    "semillas_desempate_por_checkpoint": 5,
+    "modelo_guardado": "primera corrida (semilla base)"
+  },
+  "resultados_por_corrida": [
+    {
+      "semilla": 42,
+      "victorias_entrenamiento": 4434,
+      "estados_aprendidos": 16,
+      "tasa_final": {
+        "retenidas_112": 0.921429,
+        "todas_560": 0.914286
+      }
+    },
+    {
+      "semilla": 43,
+      "victorias_entrenamiento": 4441,
+      "estados_aprendidos": 16,
+      "tasa_final": {
+        "retenidas_112": 0.925,
+        "todas_560": 0.914286
+      }
+    },
+    {
+      "semilla": 44,
+      "victorias_entrenamiento": 4441,
+      "estados_aprendidos": 16,
+      "tasa_final": {
+        "retenidas_112": 0.919643,
+        "todas_560": 0.914286
+      }
+    },
+    {
+      "semilla": 45,
+      "victorias_entrenamiento": 4475,
+      "estados_aprendidos": 16,
+      "tasa_final": {
+        "retenidas_112": 0.914286,
+        "todas_560": 0.914286
+      }
+    },
+    {
+      "semilla": 46,
+      "victorias_entrenamiento": 4454,
+      "estados_aprendidos": 16,
+      "tasa_final": {
+        "retenidas_112": 0.921429,
+        "todas_560": 0.914286
+      }
+    },
+    {
+      "semilla": 47,
+      "victorias_entrenamiento": 4511,
+      "estados_aprendidos": 16,
+      "tasa_final": {
+        "retenidas_112": 0.919643,
+        "todas_560": 0.914286
+      }
+    },
+    {
+      "semilla": 48,
+      "victorias_entrenamiento": 4526,
+      "estados_aprendidos": 16,
+      "tasa_final": {
+        "retenidas_112": 0.921429,
+        "todas_560": 0.914286
+      }
+    },
+    {
+      "semilla": 49,
+      "victorias_entrenamiento": 4407,
+      "estados_aprendidos": 16,
+      "tasa_final": {
+        "retenidas_112": 0.926786,
+        "todas_560": 0.914286
+      }
+    },
+    {
+      "semilla": 50,
+      "victorias_entrenamiento": 4438,
+      "estados_aprendidos": 16,
+      "tasa_final": {
+        "retenidas_112": 0.925,
+        "todas_560": 0.914286
+      }
+    },
+    {
+      "semilla": 51,
+      "victorias_entrenamiento": 4491,
+      "estados_aprendidos": 16,
+      "tasa_final": {
+        "retenidas_112": 0.925,
+        "todas_560": 0.914286
+      }
+    }
+  ],
+  "resumen_final_entre_corridas": {
+    "retenidas_112": {
+      "media": 0.921964,
+      "desviacion": 0.003674,
+      "minimo": 0.914286,
+      "maximo": 0.926786
+    },
+    "todas_560": {
+      "media": 0.914286,
+      "desviacion": 0.0,
+      "minimo": 0.914286,
+      "maximo": 0.914286
+    }
+  },
+  "curva": "learning_curve.csv",
+  "respaldo_anterior": "/Users/saulaguilar/PycharmProjects/buscaminas-ia/artifacts/history/20261113-190110"
+}
