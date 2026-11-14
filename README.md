@@ -5,11 +5,27 @@ adaptativa. Incluye preparación del dataset público y un clasificador explorat
 de casillas. El clasificador todavía no se usa para recomendar jugadas al estudiante:
 su sensibilidad a las minas debe mejorar antes de integrarlo.
 
-## Configuración en PyCharm
+## Instalación y prueba
 
-1. Abre esta carpeta como proyecto.
-2. Configura un intérprete Python 3.12 o posterior.
-3. En la terminal de PyCharm ejecuta `python -m pip install -r requirements.txt`.
+El repositorio es privado: cada integrante necesita acceso en GitHub antes de clonarlo.
+Se requiere Python 3.12 o posterior. En macOS o Linux:
+
+```bash
+git clone https://github.com/SaulAguilarLavado/buscaminas-ia.git
+cd buscaminas-ia
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m unittest discover -s tests -q
+.venv/bin/python main.py demo-agent --seed 42
+```
+
+En Windows, crea el entorno con `py -m venv .venv` y usa
+`.venv\Scripts\python.exe` en lugar de `.venv/bin/python`. Puedes abrir la carpeta
+clonada en PyCharm y configurar `.venv` como intérprete del proyecto.
+El modelo y las métricas finales ya están en el repositorio: `demo-agent` no requiere
+reentrenar ni descargar el dataset. Para jugar manualmente, ejecuta
+`.venv/bin/python main.py play` (o el equivalente de Windows); ese modo está separado
+del agente entrenado.
 
 La carga sigue la opción **Code → kagglehub - pandas DataFrame** de Kaggle. Se usa
 `minesweeper_dataset.csv` como `file_path`; KaggleHub gestiona su caché. No necesitas
@@ -65,8 +81,9 @@ nunca tienen mina, así que existen exactamente C(16, 3) = 560 distribuciones de
 - El estado del agente incluye la probabilidad de mina calculada con las pistas visibles
   (`Belief` en `rl_agent.py`). Qué aporta el aprendizaje respecto a ese cálculo es lo que
   mide la comparación; no se asume.
-- Los resultados anteriores se conservan en `artifacts/history/` junto con sus ajustes.
-  La carpeta `artifacts/` está en `.gitignore`, por lo que no se versiona.
+- Los resultados finales seleccionados de `artifacts/` están versionados. La carpeta
+  `artifacts/history/` conserva versiones anteriores solo en el equipo local; tampoco
+  se versiona la caché `artifacts/.matplotlib/`.
 - `demo-agent` reproduce una partida automática con el modelo guardado.
 - `report-charts` genera con Matplotlib, en `artifacts/figures/`, las gráficas de
   políticas, curva de aprendizaje, clasificador y matriz de confusión, y un
